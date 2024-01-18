@@ -97,7 +97,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                             {data.isGroup ? (
                               <AvatarGroup users={data.users} />
                             ) : (
-                              <Avatar user={otherUser} />
+                              <Avatar user={otherUser} isClickable />
                             )}
                           </div>
                           <div>{title}</div>

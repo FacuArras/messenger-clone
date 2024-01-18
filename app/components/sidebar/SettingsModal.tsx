@@ -64,14 +64,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-2">
-          <div className="border-b border-gray-900/10 pb-12">
+          <div className="pb-8">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
               Profile
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
               Edit your public information.
             </p>
-            <div className="mt-10 flex flex-col gap-y-8">
+            <div className="mt-6 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
                 label="Name"
@@ -84,10 +84,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 <label className="block text-sm font-medium leading-6 text-gray-900">
                   Photo
                 </label>
-                <div className="mt-2 flex items-center gap-x-3">
+                <div className="mt-3 flex items-center gap-x-3">
                   <Image
-                    width="48"
-                    height="48"
+                    width="50"
+                    height="50"
                     className="rounded-full"
                     src={
                       image || currentUser?.image || "/images/placeholder.jpg"
@@ -107,8 +107,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
             </div>
           </div>
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            <Button disabled={isLoading} secondary onClick={onClose}>
+          <div className="flex items-center justify-end gap-x-6">
+            <Button disabled={isLoading} danger onClick={onClose}>
               Cancel
             </Button>
             <Button disabled={isLoading} type="submit">

@@ -98,8 +98,8 @@ const ConversationList: React.FC<ConversationListProps> = ({
           isOpen ? "hidden" : "block w-full left-0"
         )}
       >
-        <div className="px-5">
-          <div className="flex justify-between mb-4 pt-4">
+        <div>
+          <div className="flex justify-between mb-4 py-4 px-5 border-b border-gray-200">
             <div className="text-2xl font-bold text-neutral-800">Messages</div>
             <div
               onClick={() => setIsModalOpen(true)}

@@ -66,7 +66,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
   return (
     <div
-      onClick={handleClick}
       className={clsx(
         "w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer p-3",
         selected ? "bg-neutral-100" : "bg-white"
@@ -75,9 +74,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       {data.isGroup ? (
         <AvatarGroup users={data.users} />
       ) : (
-        <Avatar user={otherUser} />
+        <Avatar user={otherUser} isClickable />
       )}
-      <div className="min-w-0 flex-1">
+      <div onClick={handleClick} className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">
             <p className="text-md font-medium text-gray-900">
