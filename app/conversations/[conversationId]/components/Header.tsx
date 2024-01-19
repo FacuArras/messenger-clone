@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
           {conversation.isGroup ? (
             <AvatarGroup users={conversation.users} />
           ) : (
-            <Avatar user={otherUser} />
+            <Avatar user={otherUser} isClickable />
           )}
           <div className="flex flex-col">
             <div className="font-medium">

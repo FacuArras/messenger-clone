@@ -28,9 +28,9 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
   const avatar = clsx(isOwn && "order-2");
   const body = clsx("flex flex-col gap-2", isOwn && "items-end");
   const message = clsx(
-    "text-sm w-fit overflow-hidden",
+    "text-sm w-fit relative",
     isOwn ? "bg-sky-500 text-white" : "bg-gray-100",
-    data.image ? "rounded-md p-0" : "rounded-full py-2 px-3"
+    data.image ? "rounded-md p-0" : "rounded-lg py-3 px-5 max-w-60 md:max-w-96"
   );
 
   return (
@@ -67,7 +67,14 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
             "
             />
           ) : (
-            <div>{data.body}</div>
+            <>
+              {isOwn ? (
+                <div className="-z-50 absolute bg-sky-500 top-0 right-0 w-12 h-9 transform -skew-y-6 rounded-sm"></div>
+              ) : (
+                <div className="-z-50 absolute bg-gray-100 top-0 left-0 w-12 h-9 transform skew-y-6 rounded-sm"></div>
+              )}
+              <div>{data.body}</div>
+            </>
           )}
         </div>
         {isLast && isOwn && seenList.length > 0 && (
