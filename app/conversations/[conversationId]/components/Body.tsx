@@ -62,6 +62,10 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
     };
   }, [conversationId]);
 
+  useEffect(() => {
+    bottomRef?.current?.scrollIntoView();
+  }, [messages]);
+
   return (
     <div className="flex-1 overflow-y-auto">
       {messages.map((message, i) => (
