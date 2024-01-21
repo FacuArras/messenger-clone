@@ -7,7 +7,7 @@ import Select from "@/app/components/inputs/Select";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -61,13 +61,13 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-12">
           <div className="border-b- border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
+            <h2 className="text-lg font-semibold leading-7 text-gray-900 dark:text-neutral-200">
               Create a group chat
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-gray-600 dark:text-neutral-400">
               Create a chat with more than 2 people
             </p>
-            <div className="mt-10 flex flex-col gap-y-8">
+            <div className="mt-8 flex flex-col gap-y-8">
               <Input
                 register={register}
                 label="Name"
@@ -89,17 +89,13 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
                   })
                 }
                 value={members}
+                isDarkMode={false}
               />
             </div>
           </div>
         </div>
-        <div className="mt-2 flex items-center justify-end gap-x-6">
-          <Button
-            disabled={isLoading}
-            onClick={onClose}
-            type="button"
-            secondary
-          >
+        <div className="mt-2 flex items-center justify-end gap-x-5">
+          <Button disabled={isLoading} onClick={onClose} type="button" danger>
             Cancel
           </Button>
           <Button disabled={isLoading} type="submit">

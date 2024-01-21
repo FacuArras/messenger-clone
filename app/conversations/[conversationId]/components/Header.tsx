@@ -37,11 +37,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       />
-      <div className="bg-white w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm">
+      <div className="bg-white w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm dark:bg-gray-900 dark:border-gray-700">
         <div className="flex gap-3 items-center">
           <Link
             href="/conversations"
-            className="lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer"
+            className="lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer dark:text-neutral-100 dark:hover:text-neutral-300"
           >
             <HiChevronLeft size={32} />
           </Link>
@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
             <div className="font-medium">
               {conversation.name || otherUser.name}
             </div>
-            <div className="text-sm font-light text-neutral-500">
+            <div className="text-sm font-light text-neutral-500 dark:text-neutral-400">
               {statusText}
             </div>
           </div>
@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         <HiEllipsisHorizontal
           size={32}
           onClick={() => setDrawerOpen(true)}
-          className="text-sky-500 cursor-pointer hover:text-sky-600 transition"
+          className="text-sky-500 cursor-pointer hover:text-sky-600 transition dark:text-neutral-100 dark:hover:text-neutral-300"
         />
       </div>
     </>

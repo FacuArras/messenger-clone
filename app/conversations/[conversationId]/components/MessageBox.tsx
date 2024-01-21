@@ -28,9 +28,11 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
   const avatar = clsx(isOwn && "order-2");
   const body = clsx("flex flex-col gap-2", isOwn && "items-end");
   const message = clsx(
-    "text-sm w-fit relative",
-    isOwn ? "bg-sky-500 text-white" : "bg-gray-100",
-    data.image ? "rounded-md p-0" : "rounded-lg py-3 px-5 max-w-60 md:max-w-96"
+    "text-sm w-fit relative z-50",
+    isOwn
+      ? "bg-sky-500 dark:bg-sky-700 text-white"
+      : "bg-gray-100 dark:bg-gray-600",
+    data.image ? "rounded-lg p-0" : "rounded-lg py-3 px-5 max-w-60 md:max-w-96"
   );
 
   return (
@@ -40,8 +42,10 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
       </div>
       <div className={body}>
         <div className="flex items-center gap-1">
-          <div className="text-sm text-gray-500">{data.sender.name}</div>
-          <div className="text-xs text-gray-400">
+          <div className="text-sm text-gray-500 dark:text-neutral-300">
+            {data.sender.name}
+          </div>
+          <div className="text-xs text-gray-400 dark:text-neutral-400">
             {format(new Date(data.createdAt), "p")}
           </div>
         </div>
@@ -69,9 +73,9 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
           ) : (
             <>
               {isOwn ? (
-                <div className="-z-50 absolute bg-sky-500 top-0 right-0 w-12 h-9 transform -skew-y-6 rounded-sm"></div>
+                <div className="-z-10 absolute bg-sky-500 top-0 right-0 w-12 h-9 transform -skew-y-6 rounded-sm dark:bg-sky-700"></div>
               ) : (
-                <div className="-z-50 absolute bg-gray-100 top-0 left-0 w-12 h-9 transform skew-y-6 rounded-sm"></div>
+                <div className="-z-10 absolute bg-gray-100 top-0 left-0 w-12 h-9 transform skew-y-6 rounded-sm dark:bg-gray-600"></div>
               )}
               <div>{data.body}</div>
             </>
@@ -83,6 +87,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
           text-xs 
           font-light 
           text-gray-500
+          dark:text-neutral-400
           "
           >
             {`Seen by ${seenList}`}

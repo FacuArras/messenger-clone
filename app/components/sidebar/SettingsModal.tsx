@@ -11,6 +11,7 @@ import Input from "../inputs/Input";
 import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
 import Button from "../Button";
+import ThemeSwitch from "../ThemeSwitch";
 
 interface SettingsModalProps {
   isOpen?: boolean;
@@ -64,14 +65,20 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-2">
-          <div className="pb-8">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
+          <div className="pb-7 sm:pt-8">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-neutral-200">
+                Change the theme:
+              </h2>
+              <ThemeSwitch />
+            </div>
+            <h2 className="text-base font-semibold leading-7 text-center text-gray-900 dark:text-neutral-200">
               Profile
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-gray-600 text-center dark:text-neutral-400">
               Edit your public information.
             </p>
-            <div className="mt-6 flex flex-col gap-y-8">
+            <div className="mt-3 flex flex-col gap-y-5">
               <Input
                 disabled={isLoading}
                 label="Name"
@@ -81,13 +88,13 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 register={register}
               />
               <div>
-                <label className="block text-sm font-medium leading-6 text-gray-900">
+                <label className="block text-sm font-medium leading-6 text-gray-900 dark:text-neutral-200">
                   Photo
                 </label>
                 <div className="mt-3 flex items-center gap-x-3">
                   <Image
-                    width="50"
-                    height="50"
+                    width="70"
+                    height="70"
                     className="rounded-full"
                     src={
                       image || currentUser?.image || "/images/placeholder.jpg"
@@ -107,7 +114,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-end gap-x-6">
+          <div className="flex items-center justify-end gap-x-5">
             <Button disabled={isLoading} danger onClick={onClose}>
               Cancel
             </Button>

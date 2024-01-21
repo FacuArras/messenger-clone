@@ -94,7 +94,7 @@ const AuthForm = () => {
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div className="bg-white px-4 py-8 shadow-lg rounded-lg sm:px-10 w-80 mx-auto sm:w-full">
+      <div className="bg-white px-4 py-8 shadow-lg rounded-lg sm:px-10 w-80 mx-auto sm:w-full dark:bg-gray-900">
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && (
             <Input
@@ -134,7 +134,7 @@ const AuthForm = () => {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-white px-2 text-gray-500 dark:bg-gray-900 dark:text-neutral-200">
                 Or continue with
               </span>
             </div>
@@ -152,13 +152,16 @@ const AuthForm = () => {
           </div>
         </div>
 
-        <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
+        <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500 dark:text-darkTitle">
           <div>
             {variant === "LOGIN"
               ? "New to Messenger?"
               : "Already have an account?"}
           </div>
-          <div onClick={toggleVariant} className="underline cursor-pointer">
+          <div
+            onClick={toggleVariant}
+            className="underline cursor-pointer dark:text-darkText"
+          >
             {variant === "LOGIN" ? "Create an account" : "Login"}
           </div>
         </div>
